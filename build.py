@@ -1112,7 +1112,8 @@ RUN patchelf --add-needed /usr/local/cuda/lib64/stubs/libcublasLt.so.12 backends
     if "tensorrtllm" in backends:
         df += """
 # Remove TRT contents that are not needed in runtime
-RUN ARCH="$(uname -i)" \\
+RUN export TRT_ROOT=/usr/local/tensorrt \\
+    && ARCH="$(uname -i)" \\
     && rm -fr ${TRT_ROOT}/bin ${TRT_ROOT}/targets/${ARCH}-linux-gnu/bin ${TRT_ROOT}/data \\
     && rm -fr  ${TRT_ROOT}/doc ${TRT_ROOT}/onnx_graphsurgeon ${TRT_ROOT}/python \\
     && rm -fr ${TRT_ROOT}/samples  ${TRT_ROOT}/targets/${ARCH}-linux-gnu/samples

@@ -29,7 +29,7 @@ cmake_minimum_required (VERSION 3.18)
 project(tritonserverexe LANGUAGES C CXX)
 
 include(GNUInstallDirs)
-include(CPack)
+
 #
 # Dependencies
 #
@@ -270,7 +270,6 @@ if (NOT WIN32)
   install(
     TARGETS main
     RUNTIME DESTINATION bin
-    RENAME tritonserver
   )
 else()
   # See explanation above as to why we need to rename main.exe to

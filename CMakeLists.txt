@@ -30,10 +30,6 @@ project(tritonserver LANGUAGES C CXX)
 
 include(CMakeDependentOption)
 
-set(CPACK_GENERATOR "TGZ")
-include(CPack)
-
-
 # Use C++17 standard as Triton's minimum required.
 set(TRITON_MIN_CXX_STANDARD 17 CACHE STRING "The minimum C++ standard which features are requested to build this target.")
 
@@ -271,6 +267,5 @@ ExternalProject_Add(triton-server
     -DCMAKE_BUILD_TYPE:STRING=${CMAKE_BUILD_TYPE}
     -DCMAKE_INSTALL_PREFIX:PATH=${TRITON_INSTALL_PREFIX}
     -DTRITON_VERSION:STRING=${TRITON_VERSION}
-    -DCPACK_GENERATOR:STRING="TGZ"
   DEPENDS ${TRITON_DEPENDS}
 )

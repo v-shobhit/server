@@ -1,4 +1,4 @@
-// Copyright 2020-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// Copyright 2020-2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
@@ -99,6 +99,9 @@ class HTTPServer {
   virtual void Handle(evhtp_request_t* req) = 0;
 
   static void StopCallback(evutil_socket_t sock, short events, void* arg);
+
+  static evhtp_res NewConnection(evhtp_connection_t* conn, void* arg);
+  static evhtp_res FiniConnection();
 
   int32_t port_;
   bool reuse_port_;

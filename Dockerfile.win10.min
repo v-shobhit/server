@@ -189,9 +189,9 @@ RUN setx PATH "%CUDA_INSTALL_ROOT_WP%\bin;%PATH%"
 ARG CUDNN_VERSION
 ENV CUDNN_VERSION ${CUDNN_VERSION}
 COPY --from=dependency_base /cudnn /cudnn
-COPY --from=dependency_base /cudnn/bin/cudnn*.dll ${CUDA_INSTALL_ROOT_WP}/bin/
-COPY --from=dependency_base /cudnn/lib/x64/cudnn*.lib ${CUDA_INSTALL_ROOT_WP}/lib/x64/
-COPY --from=dependency_base /cudnn/include/cudnn*.h ${CUDA_INSTALL_ROOT_WP}/include/
+COPY --from=dependency_base /cudnn/bin/cudnn*.dll %CUDA_INSTALL_ROOT_WP%\bin
+COPY --from=dependency_base /cudnn/lib/x64/cudnn*.lib %CUDA_INSTALL_ROOT_WP%\lib\x64\
+COPY --from=dependency_base /cudnn/include/cudnn*.h %CUDA_INSTALL_ROOT_WP%\include\
 LABEL CUDNN_VERSION="${CUDNN_VERSION}"
 
 ARG TENSORRT_VERSION
